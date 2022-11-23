@@ -1,0 +1,58 @@
+[
+  {
+    "id": "84c0fb285c2a1aa3",
+    "name": "Nutella",
+    "description": "Selai Coklat",
+    "image": "https://www.nutella.com/id/sites/nutella20_id/files/2021-05/nutella_350g-400g.jpg?t=1668188275",
+    "price": 45000,
+    "create_at": "2022-11-23T04:11:30.556Z"
+  },
+  {
+    "id": "2f1ce64f9b81ecff",
+    "name": "Susu Ultra Milk",
+    "description": "Rasa Coklat",
+    "image": "https://static.hdmall.id/750x450/system/image_attachments/images/000/012/629/original/susu-ultra-coklat-200-ml-1.jpg",
+    "price": 3000,
+    "create_at": "2022-11-23T04:08:26.703Z"
+  },
+  {
+    "id": "2ba801a519ed6ecb",
+    "name": "Teh Gelas",
+    "description": "Minuman",
+    "image": "https://www.static-src.com/wcsstore/Indraprastha/images/catalog/full//734/teh-gelas_teh-gelas-original-cup-180ml_full02.jpg",
+    "price": 1500,
+    "create_at": "2022-11-23T04:07:06.410Z"
+  },
+  {
+    "id": "43f46d5926221d93",
+    "name": "Doritos",
+    "description": "Rasa BBQ",
+    "image": "https://images.tokopedia.net/img/cache/500-square/product-1/2020/7/4/65736891/65736891_c0875e00-4dc2-419c-9731-e562251be8a0_550_550",
+    "price": 13000,
+    "create_at": "2022-11-23T03:59:17.136Z"
+  },
+  {
+    "id": "5f96ade65e77cdf1",
+    "name": "Pringles",
+    "description": "Snack",
+    "image": "https://cf.shopee.co.id/file/f515b69149648784e33389c5e103df96",
+    "price": 15000,
+    "create_at": "2022-11-23T03:56:29.103Z"
+  },
+  {
+    "id": "75f764df727f4abd",
+    "name": "Beng-Beng",
+    "description": "dev fav snacks",
+    "image": "https://s0.bukalapak.com/img/5969061154/large/cemilan_beng_beng_murah.png",
+    "price": "35000",
+    "create_at": "2022-11-23T03:55:30.875Z"
+  },
+  {
+    "id": "392f4ca4bcff9912",
+    "name": "Test",
+    "description": "Bootstrap",
+    "image": "https://getbootstrap.com/docs/5.2/assets/brand/bootstrap-logo-shadow.png",
+    "price": 99999,
+    "create_at": "2022-09-18T06:05:17.563Z"
+  }
+]
