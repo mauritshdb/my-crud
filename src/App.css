@@ -36,3 +36,21 @@
     transform: rotate(360deg);
   }
 }
+
+.cc {
+  display: flex;
+  justify-content: center;
+}
+
+.cForm {
+  width: 50vw;
+  height: 50vh;
+  padding: 64px 32px;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.cTable {
+  background-color: rgba(0, 0, 0, 0.5);
+  width: 50vw;
+  height: 50vh;
+}
