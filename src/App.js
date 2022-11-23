@@ -115,6 +115,7 @@ function App() {
       <div className='container'>
         <div className='cc'>
           <div className='cForm'>
+            <h1>Input Product</h1>
             <Form onSubmit={handleAdd}>
               <Form.Group className="mb-3" controlId="formBasicName">
                 <Form.Label>Product Name</Form.Label>
