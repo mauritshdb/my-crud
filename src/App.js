@@ -5,6 +5,8 @@ import Table from 'react-bootstrap/Table';
 import Button from 'react-bootstrap/Button';
 import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Form from 'react-bootstrap/Form';
+import Container from 'react-bootstrap/Container';
+import Navbar from 'react-bootstrap/Navbar';
 
 function App() {
   const [data, setData] = useState([]);
@@ -63,8 +65,20 @@ function App() {
 
   return (
     <>
-      <h1>CRUD</h1>
-
+      <Navbar bg="dark" variant="dark">
+        <Container>
+          <Navbar.Brand href="#home">
+            <img
+              alt=""
+              src="/logo.svg"
+              width="30"
+              height="30"
+              className="d-inline-block align-top"
+            />{' '}
+            My CRUD
+          </Navbar.Brand>
+        </Container>
+      </Navbar>
       <div className='container'>
         <div className='cc'>
           <div className='cForm'>
