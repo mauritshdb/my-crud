@@ -7,13 +7,15 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 import Navbar from 'react-bootstrap/Navbar';
+import Modal from 'react-bootstrap/Modal';
 
 function App() {
   const [data, setData] = useState([]);
-  const [name, setName] = useState('');
-  const [description, setDescription] = useState('');
-  const [image, setImage] = useState('');
-  const [price, setPrice] = useState('');
+
+  const [show, setShow] = useState(false);
+
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
   const getData = () => {
     Axios({
@@ -21,7 +23,6 @@ function App() {
       url: 'http://localhost:7777/product',
     })
       .then(function (response) {
-        console.log(response);
         setData(response.data.data);
       });
   }
@@ -131,13 +132,74 @@ function App() {
                     <td><img src={item.image} width='50%'></img></td>
                     <td>{'Rp. ' + item.price}</td>
                     <td><ButtonGroup aria-label="Action">
-                      <Button size="sm" variant="primary">Edit</Button>
+                      <Button size="sm" variant="primary" onClick={handleShow}>Edit</Button>
                       <Button size="sm" variant="danger" onClick={() => handleDelete(item.id)}>Delete</Button>
                     </ButtonGroup></td>
                   </tr>
                 })}
               </tbody>
             </Table>
+            <Modal show={show} onHide={handleClose}>
+              <Modal.Header closeButton>
+                {data.map((item, index) => {
+                  <Modal.Title>{index + 1}Edit product {item.name}</Modal.Title>
+                })}
+              </Modal.Header>
+              <Modal.Body>
+                <Form>
+                  <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
+                    <Form.Label>Product name</Form.Label>
+                    <Form.Control
+                      type="text"
+                      placeholder="Edit product name"
+                      autoFocus
+                    />
+                  </Form.Group>
+                  <Form.Group
+                    className="mb-3"
+                    controlId="exampleForm.ControlInput2"
+                  >
+                    <Form.Label>Description</Form.Label>
+                    <Form.Control
+                      type="text"
+                      placeholder="Edit description"
+                      autoFocus
+                    />
+                  </Form.Group>
+
+                  <Form.Group
+                    className="mb-3"
+                    controlId="exampleForm.ControlInput3"
+                  >
+                    <Form.Label>Image Link</Form.Label>
+                    <Form.Control
+                      type="text"
+                      placeholder="Edit image link"
+                      autoFocus
+                    />
+                  </Form.Group>
+                  <Form.Group
+                    className="mb-3"
+                    controlId="exampleForm.ControlInput2"
+                  >
+                    <Form.Label>Price</Form.Label>
+                    <Form.Control
+                      type="number"
+                      placeholder="Edit price"
+                      autoFocus
+                    />
+                  </Form.Group>
+                </Form>
+              </Modal.Body>
+              <Modal.Footer>
+                <Button variant="secondary" onClick={handleClose}>
+                  Close
+                </Button>
+                <Button variant="primary" onClick={handleClose}>
+                  Save Changes
+                </Button>
+              </Modal.Footer>
+            </Modal>
           </div>
         </div>
       </div>
