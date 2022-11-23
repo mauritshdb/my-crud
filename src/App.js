@@ -66,60 +66,65 @@ function App() {
       <h1>CRUD</h1>
 
       <div className='container'>
-        <div>
-          <Form onSubmit={handleAdd}>
-            <Form.Group className="mb-3" controlId="formBasicName">
-              <Form.Label>Product Name</Form.Label>
-              <Form.Control type="text" placeholder="Enter product name" />
-            </Form.Group>
+        <div className='cc'>
+          <div className='cForm'>
+            <Form onSubmit={handleAdd}>
+              <Form.Group className="mb-3" controlId="formBasicName">
+                <Form.Label>Product Name</Form.Label>
+                <Form.Control type="text" placeholder="Enter product name" />
+              </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicDescription">
-              <Form.Label>Description</Form.Label>
-              <Form.Control type="text" placeholder="Enter Description" />
-            </Form.Group>
+              <Form.Group className="mb-3" controlId="formBasicDescription">
+                <Form.Label>Description</Form.Label>
+                <Form.Control type="text" placeholder="Enter Description" />
+              </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicImageLink">
-              <Form.Label>Image Address</Form.Label>
-              <Form.Control type="text" placeholder="Enter image address" />
-            </Form.Group>
+              <Form.Group className="mb-3" controlId="formBasicImageLink">
+                <Form.Label>Image Address</Form.Label>
+                <Form.Control type="text" placeholder="Enter image address" />
+                <Form.Text className="text-muted">
+                  link must be ended with .jpg .png .gif
+                </Form.Text>
+              </Form.Group>
 
-            <Form.Group className="mb-3" controlId="formBasicPrice">
-              <Form.Label>Price</Form.Label>
-              <Form.Control type="number" placeholder="Enter Price" />
-            </Form.Group>
-            <Button variant="primary" type="submit">
-              Submit
-            </Button>
-          </Form>
-        </div>
-        <div className='cTable'>
-          <Table responsive striped bordered hover variant="dark">
-            <thead>
-              <tr>
-                <th>#</th>
-                <th>Product name</th>
-                <th>Description</th>
-                <th style={{width: '15%', height: '15%'}}>Image</th>
-                <th>Price</th>
-                <th>Action</th>
-              </tr>
-            </thead>
-            <tbody>
-              {data.map((item, index) => {
-                return <tr key={index}>
-                  <td>{index + 1}</td>
-                  <td>{item.name}</td>
-                  <td>{item.description}</td>
-                  <td><img src={item.image} width='50%'></img></td>
-                  <td>{'Rp. ' + item.price}</td>
-                  <td><ButtonGroup aria-label="Action">
-                    <Button size="sm" variant="primary">Edit</Button>
-                    <Button size="sm" variant="danger" onClick={() => handleDelete(item.id)}>Delete</Button>
-                  </ButtonGroup></td>
+              <Form.Group className="mb-3" controlId="formBasicPrice">
+                <Form.Label>Price</Form.Label>
+                <Form.Control type="number" placeholder="Enter Price" />
+              </Form.Group>
+              <Button variant="primary" type="submit">
+                Submit
+              </Button>
+            </Form>
+          </div>
+          <div className='cTable'>
+            <Table responsive striped bordered hover variant="dark">
+              <thead>
+                <tr>
+                  <th>#</th>
+                  <th>Product name</th>
+                  <th>Description</th>
+                  <th style={{ width: '15%', height: '15%' }}>Image</th>
+                  <th>Price</th>
+                  <th>Action</th>
                 </tr>
-              })}
-            </tbody>
-          </Table>
+              </thead>
+              <tbody>
+                {data.map((item, index) => {
+                  return <tr key={index}>
+                    <td>{index + 1}</td>
+                    <td>{item.name}</td>
+                    <td>{item.description}</td>
+                    <td><img src={item.image} width='50%'></img></td>
+                    <td>{'Rp. ' + item.price}</td>
+                    <td><ButtonGroup aria-label="Action">
+                      <Button size="sm" variant="primary">Edit</Button>
+                      <Button size="sm" variant="danger" onClick={() => handleDelete(item.id)}>Delete</Button>
+                    </ButtonGroup></td>
+                  </tr>
+                })}
+              </tbody>
+            </Table>
+          </div>
         </div>
       </div>
     </>
