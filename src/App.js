@@ -12,10 +12,21 @@ import Modal from 'react-bootstrap/Modal';
 function App() {
   const [data, setData] = useState([]);
 
+  const [nameEdit, setNameEdit] = useState('');
+  const [descEdit, setDescEdit] = useState('');
+  const [imgEdit, setImgEdit] = useState('');
+  const [priceEdit, setPriceEdit] = useState('');
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const handleShow = (id, name, description, image, price) => {
+    setShow(id);
+    setNameEdit(name)
+    setDescEdit(description)
+    setImgEdit(image)
+    setPriceEdit(price)
+  }
+  
 
   const getData = () => {
     Axios({
@@ -40,7 +51,7 @@ function App() {
         name: name,
         description: description,
         image: image,
-        price: price
+        price: parseInt(price)
       }
     })
       .then(function (response) {
@@ -58,6 +69,27 @@ function App() {
           getData()
         });
     }
+  }
+
+  const handleEdit = () => {
+    Axios({
+      method: 'put',
+      url: `http://localhost:7777/product/${show}`,
+      data: {
+        name: nameEdit,
+        description: descEdit,
+        image: imgEdit,
+        price: parseInt(priceEdit)
+      }
+    })
+      .then(function (response) {
+        handleClose()
+        setNameEdit('')
+        setDescEdit('')
+        setImgEdit('')
+        setPriceEdit('')
+        getData()
+      });
   }
 
   useEffect(() => {
@@ -132,7 +164,7 @@ function App() {
                     <td><img src={item.image} width='50%'></img></td>
                     <td>{'Rp. ' + item.price}</td>
                     <td><ButtonGroup aria-label="Action">
-                      <Button size="sm" variant="primary" onClick={handleShow}>Edit</Button>
+                      <Button size="sm" variant="primary" onClick={() => handleShow(item.id, item.name, item.description, item.image, item.price)}>Edit</Button>
                       <Button size="sm" variant="danger" onClick={() => handleDelete(item.id)}>Delete</Button>
                     </ButtonGroup></td>
                   </tr>
@@ -141,18 +173,18 @@ function App() {
             </Table>
             <Modal show={show} onHide={handleClose}>
               <Modal.Header closeButton>
-                {data.map((item, index) => {
-                  <Modal.Title>{index + 1}Edit product {item.name}</Modal.Title>
-                })}
+                <Modal.Title>Edit product</Modal.Title>
               </Modal.Header>
               <Modal.Body>
-                <Form>
+                <Form onSubmit={handleEdit}>
                   <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
                     <Form.Label>Product name</Form.Label>
                     <Form.Control
                       type="text"
                       placeholder="Edit product name"
                       autoFocus
+                      value={nameEdit}
+                      onChange={(e) => setNameEdit(e.target.value)}
                     />
                   </Form.Group>
                   <Form.Group
@@ -163,7 +195,8 @@ function App() {
                     <Form.Control
                       type="text"
                       placeholder="Edit description"
-                      autoFocus
+                      value={descEdit}
+                      onChange={(e) => setDescEdit(e.target.value)}
                     />
                   </Form.Group>
 
@@ -175,7 +208,8 @@ function App() {
                     <Form.Control
                       type="text"
                       placeholder="Edit image link"
-                      autoFocus
+                      value={imgEdit}
+                      onChange={(e) => setImgEdit(e.target.value)}
                     />
                   </Form.Group>
                   <Form.Group
@@ -186,7 +220,8 @@ function App() {
                     <Form.Control
                       type="number"
                       placeholder="Edit price"
-                      autoFocus
+                      value={priceEdit}
+                      onChange={(e) => setPriceEdit(e.target.value)}
                     />
                   </Form.Group>
                 </Form>
@@ -195,7 +230,7 @@ function App() {
                 <Button variant="secondary" onClick={handleClose}>
                   Close
                 </Button>
-                <Button variant="primary" onClick={handleClose}>
+                <Button variant="primary" onClick={handleEdit}>
                   Save Changes
                 </Button>
               </Modal.Footer>
